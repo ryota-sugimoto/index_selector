@@ -1,0 +1,1 @@
+./index_selector.py ref_indices.fasta 30 > selected_indices.fasta

@@ -7,6 +7,7 @@ parser.add_argument('number_of_output_indices', type=int)
 parser.add_argument('--used_indices', '-u', type=argparse.FileType('r'))
 parser.add_argument('--number_of_seeds', '-n', type=int, default=8)
 parser.add_argument('--number_of_replicates', '-r', type=int, default=1000)
+parser.add_argument('--seed', type=int, default=123456)
 args = parser.parse_args()
 
 if args.number_of_output_indices <= args.number_of_seeds:
@@ -58,6 +59,8 @@ else:
       best = ref_index[rows]
   
   ref_index = np.delete(ref_index, best_rows, axis=0)
+
+np.random.seed(args.seed)
 
 while best.shape[0] < args.number_of_output_indices and len(ref_index) > 0:
   best_score = float('inf')
