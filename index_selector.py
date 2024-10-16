@@ -50,7 +50,7 @@ else:
   best_score = float('inf')
   for i in range(args.number_of_replicates):
     rows = np.random.choice(ref_index.shape[0],
-                            args.number_of_seeds, replace=True)
+                            args.number_of_seeds, replace=False)
     
     score = sqdevsum(ref_index[rows])
     if score < best_score:
