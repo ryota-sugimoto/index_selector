@@ -34,6 +34,8 @@ def sqdevsum(mat):
     res.append(kl)
   return sum(res)
 
+np.random.seed(args.seed)
+
 if args.used_indices:
   l = []
   for record in SeqIO.parse(args.used_indices, 'fasta'):
@@ -59,8 +61,6 @@ else:
       best = ref_index[rows]
   
   ref_index = np.delete(ref_index, best_rows, axis=0)
-
-np.random.seed(args.seed)
 
 while best.shape[0] < args.number_of_output_indices and len(ref_index) > 0:
   best_score = float('inf')
